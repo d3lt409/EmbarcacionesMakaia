@@ -1,19 +1,22 @@
 public class Boat {
 
-    private Captain captain;
-    private double basePrice;
-    private double aditionalPrice;
-    private int fabricationAge;
-    private float length;
+    protected Captain captain;
+    protected double basePrice;
+    protected double aditionalPrice = 0;
+    protected int fabricationAge;
+    protected float length;
 
     public Boat(Captain captain) {
         this.captain = captain;
     }
 
-    public Boat(Captain captain, double basePrice, double aditionalPrice, int fabricationAge, float length) {
+    public Boat(Captain captain, double basePrice, int fabricationAge, float length) {
         this.captain = captain;
         this.basePrice = basePrice;
-        this.aditionalPrice = aditionalPrice;
+        if (fabricationAge > 2020){
+            this.aditionalPrice = 20000;
+        }
+        
         this.fabricationAge = fabricationAge;
         this.length = length;
     }
@@ -38,16 +41,15 @@ public class Boat {
         return this.aditionalPrice;
     }
 
-    public void setAditionalPrice(double aditionalPrice) {
-        this.aditionalPrice = aditionalPrice;
-    }
-
     public int getFabricationAge() {
         return this.fabricationAge;
     }
 
     public void setFabricationAge(int fabricationAge) {
         this.fabricationAge = fabricationAge;
+        if (fabricationAge > 2020){
+            this.aditionalPrice = 20000;
+        }
     }
 
     public float getLength() {
@@ -56,6 +58,16 @@ public class Boat {
 
     public void setLength(float length) {
         this.length = length;
+    }
+
+    @Override
+    public String toString() {
+        if (this.aditionalPrice > 0) {
+            return "Capitán(" + captain + ")\n"+
+                "Precio base: " + basePrice + ", Precio adicional: " + aditionalPrice +  ", Año de fabricacion: " + this.fabricationAge + ", Eslora: " + this.length ;
+        }
+        return "Capitán(" + captain + ")\n"+
+         "Precio base: " + basePrice + ", Año de fabricacion: " + this.fabricationAge + ", Eslora: " + this.length ;
     }
 
 }

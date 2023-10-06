@@ -17,5 +17,10 @@ public class Sale {
         return this.boat;
     }
 
+    @Override
+    public String toString() {
+        return "Sale{" + this.person + "," + this.boat + "}";
+    }
+
 
 }

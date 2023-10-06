@@ -5,7 +5,9 @@ public class Store {
 
     private List<Sale> sales = new ArrayList<Sale>();
     private List<Boat> boats = new ArrayList<Boat>();
-    private List<Person> people = new ArrayList<Person>();
+    private List<Person> people = new ArrayList<Person>();    
+    private List<Captain> captains = new ArrayList<Captain>();
+
 
     public Store(Boat boat) {
         this.boats.add(boat);
@@ -23,8 +25,32 @@ public class Store {
         sales.add(new Sale(person, sailboat));
     }
 
+    public List<Sale> getSales(){
+        return sales;
+    }
+
     public void addClient(Person client) {
         this.people.add(client);
+    }
+
+    public void addCaptain(Captain captain) {
+        this.captains.add(captain);
+    }
+
+    public void addCaptains(List<Captain> captains) {
+        this.captains.addAll(captains);
+    }
+
+    public List<Captain> getCaptains(){
+        return this.captains;
+    }
+
+    public List<Captain> getAvailableCaptains(){
+        List<Captain> captains = this.captains;
+        for (Sale sale : sales) {
+            captains.remove(sale.getBoat().getCaptain());
+        }
+        return captains;
     }
 
     public void addBoat(Boat boat) {
@@ -45,6 +71,16 @@ public class Store {
         return yachts;
     }
 
+    public List<Yacht> getAvailableYacht(){
+        List<Yacht> yachts = getYacht();
+        for (Sale sale : sales) {
+            if (sale.getBoat() instanceof Yacht) {
+                yachts.remove(sale.getBoat());
+            }
+        }
+        return yachts;
+    }
+
     public List<Sailboat> getSailboat(){
         List<Sailboat> sailboat = new ArrayList<>();
         for (Boat boat : getBoats()) {
@@ -53,6 +89,16 @@ public class Store {
             }
         }
         return sailboat;
+    }
+
+    public List<Sailboat> getAvailableSailboat(){
+        List<Sailboat> sailboats = getSailboat();
+        for (Sale sale : sales) {
+            if (sale.getBoat() instanceof Sailboat) {
+                sailboats.remove(sale.getBoat());
+            }
+        }
+        return sailboats;
     }
 
 

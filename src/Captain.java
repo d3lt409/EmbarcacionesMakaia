@@ -11,5 +11,10 @@ public class Captain extends Person {
         return this._registrationId;
     }
 
+    @Override 
+    public String toString() {
+        return super.toString() + ", Matrícula: " + _registrationId;
+    }
+
     
 }

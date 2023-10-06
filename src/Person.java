@@ -1,29 +1,34 @@
 public class Person {
     
-    private String _name;
-    private String _lastName;
+    protected String name;
+    protected String lastName;
 
 
     public Person(String name, String lastName){
-        this._name = name;
-        this._lastName = lastName;
+        this.name = name;
+        this.lastName = lastName;
     }
 
 
     public String getName() {
-        return this._name;
+        return this.name;
     }
 
-    public void setName(String _name) {
-        this._name = _name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
-        return this._lastName;
+        return this.lastName;
     }
 
-    public void setLastName(String _lastName) {
-        this._lastName = _lastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Last Name: " + lastName;
     }
 
 
