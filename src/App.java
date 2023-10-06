@@ -89,12 +89,10 @@ public class App {
                     case 1:
                         if (!store.getAvailableCaptains().isEmpty()) {
                             try {
-                                inScanner.nextInt();
                                 printCaptainsEnum(store.getAvailableCaptains());
                                 System.out.print("Seleccione el capitán para el yate > ");
                                 int ix = inScanner.nextInt();
                                 Captain captain = store.getAvailableCaptains().get(ix - 1);
-                                inScanner.nextDouble();
                                 System.out.println("");
                                 System.out.println("Ingrese el precio base del yate");
                                 double price = inScanner.nextDouble();
@@ -119,12 +117,10 @@ public class App {
                     case 2:
                         if (!store.getAvailableCaptains().isEmpty()) {
                             try {
-                                inScanner.nextInt();
                                 printCaptainsEnum(store.getAvailableCaptains());
                                 System.out.print("Seleccione el capitán para el yate > ");
                                 int ix = inScanner.nextInt();
                                 Captain captain = store.getAvailableCaptains().get(ix - 1);
-                                inScanner.nextDouble();
                                 System.out.println("");
                                 System.out.println("Ingrese el precio base del velero");
                                 double price = inScanner.nextDouble();
