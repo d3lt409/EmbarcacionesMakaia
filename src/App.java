@@ -154,7 +154,8 @@ public class App {
                             System.out.print("Ingrese el apellido del comprador > ");
                             String lastName = inScanner.nextLine();
                             store.buyYacht(new Person(name, lastName), yachtSale);
-                            System.out.println("Acabas de vender un yate " + yachtSale.validate());
+                            System.out.println("Acabas de vender un yate " + yachtSale.validate()
+                            + ", con un precio total de " + yachtSale.basePrice + yachtSale.aditionalPrice);
 
                         } else {
                             System.out.println("No hay yates disponibles");
@@ -167,15 +168,15 @@ public class App {
                             printSailboatEnum(store.getAvailableSailboat());
                             System.out.println("Seleccione el velero");
                             int ix = inScanner.nextInt();
-                            Yacht yachtSale = store.getAvailableYacht().get(ix - 1);
+                            Sailboat sailboatSelect = store.getAvailableSailboat().get(ix - 1);
                             inScanner.nextLine();
                             System.out.print("Ingrese el nombre del comprador > ");
                             String name = inScanner.nextLine();
                             System.out.print("Ingrese el apellido del comprador > ");
                             String lastName = inScanner.nextLine();
-                            store.buyYacht(new Person(name, lastName), yachtSale);
-                            System.out.println("Acabas de rentar un velero " + yachtSale.validate()
-                                    + ", con un precio total de " + yachtSale.basePrice + yachtSale.aditionalPrice);
+                            store.rentSailboat(new Person(name, lastName), sailboatSelect);
+                            System.out.println("Acabas de rentar un velero " + sailboatSelect.validate()
+                                    + ", con un precio total de " + sailboatSelect.basePrice + sailboatSelect.aditionalPrice);
 
                         } else {
                             System.out.println("No hay veleros disponibles");
